@@ -1,13 +1,16 @@
-
 # 🎯 Pipeline de Vérification d'Articles
 
-Ce projet est un **pipeline d'analyse automatique** des articles commerciaux, qui détecte plusieurs types d’anomalies (champs vides, duplication, erreurs de code, anomalies via modèle ML) à partir de données d’articles récupérées via une API. Les anomalies détectées sont enregistrées dans une base de données SQL.
+Ce projet est un **pipeline d'analyse automatique** des articles commerciaux, qui détecte plusieurs types d’anomalies :
+- Champs vides
+- Duplications
+- Erreurs de code
+- Anomalies détectées via modèle Machine Learning (scikit-learn)
+
+Les articles sont récupérés via une API et les anomalies sont enregistrées dans une base de données SQL.
 
 ---
-```bash
 
 ## 📁 Structure du projet
-
 NafNafSystem/
 │
 ├── main.py # Démarrage FastAPI et scheduler
@@ -27,26 +30,27 @@ NafNafSystem/
 ├── requirements.txt # Dépendances Python
 └── README.md # Ce fichier
 
-
-
 ---
 
 ## 🚀 Comment exécuter le projet
 
 ### 1. Cloner le dépôt
-
-git clone https://github.com/Helmisoudana/Pipline_Projet_Stage.git
-cd Pipline_Projet_Stage
 2. Créer un environnement virtuel
-
+bash
+Copier
+Modifier
 python -m venv venv
-source venv/bin/activate          # Linux/macOS
-venv\Scripts\activate             # Windows
+# Linux/macOS
+source venv/bin/activate
+# Windows
+venv\Scripts\activate
 3. Installer les dépendances
-
+bash
+Copier
+Modifier
 pip install -r requirements.txt
 ⚙️ Configuration .env
-Crée un fichier .env à la racine du projet (s’il n’existe pas) et ajoute :
+Crée un fichier .env à la racine du projet avec le contenu suivant :
 
 env
 Copier
@@ -55,32 +59,34 @@ API_URL=http://127.0.0.1:8000/article/
 API_URL_BY_ID=http://127.0.0.1:8000/article/by_ids
 MONGODB_URL=mongodb://localhost:27017
 MYSQL_URL=mysql+mysqlconnector://root:password@localhost:3306/nom_de_ta_base
-🛠 Remplace password et nom_de_ta_base selon ta config locale.
+🔧 Remplace password et nom_de_ta_base par les valeurs de ta configuration locale.
 
 🧠 Technologies utilisées
-FastAPI – Framework API web rapide
+FastAPI – Framework web rapide pour APIs
 
-SQLModel – ORM basé sur SQLAlchemy et Pydantic
+SQLModel – ORM basé sur SQLAlchemy + Pydantic
 
-APScheduler – Exécution périodique du pipeline
+APScheduler – Exécution automatique du pipeline périodiquement
 
-Scikit-learn – Pour le modèle de détection d'anomalies
+Scikit-learn – Modèle de détection d’anomalies
 
-pymongo – Accès à MongoDB (optionnel)
+pymongo – Connexion MongoDB (optionnel)
 
-requests – Requêtes HTTP vers API
+requests – Requêtes HTTP vers API distante
 
-python-dotenv – Chargement des variables d’environnement
+python-dotenv – Gestion des variables d’environnement
 
 ▶️ Lancer l'application
-
+bash
+Copier
+Modifier
 uvicorn main:app --reload
-Cela démarre le serveur FastAPI et le scheduler du pipeline toutes les 2 heures.
+Démarre le serveur FastAPI et le scheduler (le pipeline s’exécute toutes les 2 heures automatiquement).
 
 🧪 Endpoints utiles
 Méthode	URL	Description
 POST	/article/import	Importation par JSON (liste d'IDs)
-GET	/article/	Récupère tous les articles
+GET	/article/	Récupère tous les articles disponibles
 POST	/pipeline/run	Lance manuellement le pipeline
 
 ✍️ Auteur
@@ -88,20 +94,3 @@ Helmi Soudana
 📍 ENISo, Tunisie
 📧 helmi.soudana@example.com
 
-📜 Licence
-Ce projet est open-source sous licence MIT.
-
-
-
----
-
-Souhaite-tu que je crée le fichier et le pousse dans ton dépôt GitHub automatiquement (en t'expliquant comment faire), ou préfères-tu le faire manuellement ?
-
-
-
-
-
-
-
-
-Demander à ChatGPT
