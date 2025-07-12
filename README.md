@@ -35,20 +35,15 @@ NafNafSystem/
 
 ### 1. Cloner le dépôt
 
-```bash
 git clone https://github.com/Helmisoudana/Pipline_Projet_Stage.git
 cd Pipline_Projet_Stage
 2. Créer un environnement virtuel
-bash
-Copier
-Modifier
+
 python -m venv venv
 source venv/bin/activate          # Linux/macOS
 venv\Scripts\activate             # Windows
 3. Installer les dépendances
-bash
-Copier
-Modifier
+
 pip install -r requirements.txt
 ⚙️ Configuration .env
 Crée un fichier .env à la racine du projet (s’il n’existe pas) et ajoute :
