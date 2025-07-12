@@ -1,12 +1,10 @@
-📄 README.md
-markdown
-Copier
-Modifier
+
 # 🎯 Pipeline de Vérification d'Articles
 
 Ce projet est un **pipeline d'analyse automatique** des articles commerciaux, qui détecte plusieurs types d’anomalies (champs vides, duplication, erreurs de code, anomalies via modèle ML) à partir de données d’articles récupérées via une API. Les anomalies détectées sont enregistrées dans une base de données SQL.
 
 ---
+```bash
 
 ## 📁 Structure du projet
 
@@ -29,9 +27,7 @@ NafNafSystem/
 ├── requirements.txt # Dépendances Python
 └── README.md # Ce fichier
 
-yaml
-Copier
-Modifier
+
 
 ---
 
@@ -82,9 +78,7 @@ requests – Requêtes HTTP vers API
 python-dotenv – Chargement des variables d’environnement
 
 ▶️ Lancer l'application
-bash
-Copier
-Modifier
+
 uvicorn main:app --reload
 Cela démarre le serveur FastAPI et le scheduler du pipeline toutes les 2 heures.
 
@@ -102,9 +96,7 @@ Helmi Soudana
 📜 Licence
 Ce projet est open-source sous licence MIT.
 
-yaml
-Copier
-Modifier
+
 
 ---
 
