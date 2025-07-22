@@ -3,6 +3,8 @@ from routes.article_routes import router as article_router
 from verification.pipline import pipline
 from apscheduler.schedulers.background import BackgroundScheduler
 from routes.verifierArticles_routes import router as verifierArticles
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
 app.include_router(article_router)
 app.include_router(verifierArticles)
@@ -10,6 +12,14 @@ scheduler = BackgroundScheduler()
 
  
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # ou ton frontend http://localhost:4200
+    allow_credentials=True,
+    allow_methods=["*"],  # <- autorise GET, POST, OPTIONS...
+    allow_headers=["*"],
+)
 @app.get("/")
 def home() :
     return {'welcome to our system'}

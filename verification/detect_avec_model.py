@@ -6,7 +6,7 @@ import math
 import xgboost as xgb
 from xgboost import DMatrix
 import traceback  # pour logguer les erreurs
-from catboost import CatBoostRegressor
+from catboost import CatBoostClassifier
 
 
  # Assure-toi que le chemin est correct
@@ -29,7 +29,7 @@ def data_pretraitement(articles):
 
 def detcter_les_anomalies(articles):
     anomalies = []
-    model = CatBoostRegressor()
+    model = CatBoostClassifier()
     model.load_model("catboost_model.cbm")
     try:
         df = data_pretraitement(articles)
@@ -40,7 +40,9 @@ def detcter_les_anomalies(articles):
                 row['prixAchat'],
                 row['Famille_SousFamille_encoded']
             ]], columns=["PrixFac", "prixAchat", "Famille_SousFamille_encoded"])
+            print(x)
             prediction = model.predict(x)
+            print ('prediction=', prediction)
             if prediction[0] == 1:
                 anomalies.append({
                     "IDArticle": row['IDArticle'],
