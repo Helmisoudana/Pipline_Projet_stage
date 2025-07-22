@@ -8,7 +8,7 @@ def detect_null_or_vide_champs(articles: list[dict]) -> list[dict]:
                 continue
 
             # On considère comme vide : None, '', 'null', 'NULL', '   '
-            if value is None or str(value).strip().lower() in ['', 'null']:
+            if value is None or str(value).strip().lower() in ['', 'null' , '0']:
                 values+= ' ' + str(field) 
         if values != '' :     
             anomalies.append({

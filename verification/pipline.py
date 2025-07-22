@@ -1,4 +1,4 @@
-from verification.fetchdata import get_articles
+from verification.fetchdata import get_articles_yesterday
 from verification.verif_duplication import detect_duplicates
 from verification.verifnull import detect_null_or_vide_champs
 from verification.VerifCode import detect_code_errors
@@ -9,7 +9,10 @@ from fastapi import HTTPException
 def pipline():
     try:
         anomalies = []
-        articles = get_articles()
+        articles = get_articles_yesterday()
+        if not articles:
+            print("Aucun article à traiter hier.")
+            return 
         anomalies += detect_duplicates(articles)
         anomalies_null = detect_null_or_vide_champs(articles)
         if not anomalies_null:

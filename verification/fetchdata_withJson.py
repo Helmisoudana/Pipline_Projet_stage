@@ -6,6 +6,7 @@ from models.ar_sfamille import ar_sfamille
 from models.saison import saison
 from models.grille import grille
 from fastapi.responses import JSONResponse
+from fastapi import HTTPException
 
 def import_articles_by_ids(ids):
     try:
@@ -34,7 +35,6 @@ def import_articles_by_ids(ids):
             )
 
             rows = session.exec(stmt).all()
-
             result = []
             for row in rows:
                 d = {

@@ -1,6 +1,6 @@
 # schemas/article_schema.py
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional , List
 
 class ArFamilleSchema(BaseModel):
     IDArFamille: int
@@ -36,3 +36,22 @@ class ArticleRead(BaseModel):
 
     class Config:
         orm_mode = True
+class ArticlesImportRequest(BaseModel):
+    ids: List[int]
+
+
+
+class ArticleImportRequest(BaseModel) :
+    IDArticle:int
+    Article:str
+    Etat : int
+    prixAchat:float
+    PrixFac: float
+    Famille: str
+    SousFamille: str
+    codeFamille: str
+    Saison: str
+    Ordre: str
+    couleur: str
+    fournisseur: str
+    Code:str

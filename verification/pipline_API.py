@@ -5,13 +5,14 @@ from verification.VerifCode import detect_code_errors
 from verification.detect_avec_model import detcter_les_anomalies
 from fastapi import HTTPException
 
-def pipline(payload):
+def pipline(articles):
     try:
         anomalies = []
-        articles = import_articles_by_ids(payload)
         anomalies += detect_duplicates(articles)
-        anomalies += detect_null_or_vide_champs(articles)
-        anomalies += detect_code_errors(articles)
+        anomalies_null = detect_null_or_vide_champs(articles)
+        if not anomalies_null:
+            anomalies += detect_code_errors(articles) 
+        anomalies += anomalies_null
         anomalies += detcter_les_anomalies(articles)
         return anomalies
 
