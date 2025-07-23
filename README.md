@@ -159,25 +159,32 @@ POST /articles/testarticle : Vérifie des articles provenant d'une API externe
 curl -X POST http://localhost:8000/articles/testarticle
 ```
 📚 **Visualiser la documentation de l'API**
-  🔹 *Option 1 : Aperçu local avec l'extension VS Code*
-    1. *Installe l'extension Swagger Viewer :*
-      -Ouvre Visual Studio Code.
-      -Va dans les extensions (Ctrl + Shift + X).
-      -Recherchez Swagger Viewer et installez-la.
-    2.*Ouvre le fichier API-Doc.yaml ou API-Doc.json.*
-    3.*Clique droit > Preview Swagger ou appuie sur Ctrl + Shift + P, tape Swagger: Preview.*
 
-  🔹 *Option 2 : Via Swagger UI intégré (FastAPI)*
-    Lance le serveur FastAPI, puis accède à la documentation interactive :
-  ```bash
-  http://localhost:${port}/docs
-  ```
+🔹 **Option 1 : Aperçu local avec l'extension VS Code**
 
-🔹 *option 3 : Visualiser un fichier local avec Swagger UI*
-  tu as un fichier `API-Doc.json` :
-    1.Va sur https://editor.swagger.io
-    2.Clique sur File > Import File et charge ton fichier local.
+1. Installe l'extension Swagger Viewer :
+   - Ouvre Visual Studio Code.
+   - Va dans les extensions (Ctrl + Shift + X).
+   - Recherche **Swagger Viewer** et installe-la.
+2. Ouvre le fichier `API-Doc.yaml` ou `API-Doc.json`.
+3. Clique droit > **Preview Swagger**  
+   ou appuie sur Ctrl + Shift + P, tape **Swagger: Preview**.
 
+---
 
-👨‍💻 **Auteur**
-Helmi Soudana – @Helmisoudana
+🔹 **Option 2 : Via Swagger UI intégré (FastAPI)**
+
+Lance le serveur FastAPI, puis accède à la documentation interactive :  
+`http://localhost:${port}/docs`
+
+---
+
+🔹 **Option 3 : Visualiser un fichier local avec Swagger UI**
+
+Tu as un fichier `API-Doc.json` :  
+1. Va sur [https://editor.swagger.io](https://editor.swagger.io)  
+2. Clique sur **File > Import File** et charge ton fichier local.
+
+---
+
+👨‍💻 Auteur Helmi Soudana – @Helmisoudana
