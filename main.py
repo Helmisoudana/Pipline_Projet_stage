@@ -1,9 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from routes.article_routes import router as article_router
-from verification.pipline import pipline
+from services.pipline import pipline
 from apscheduler.schedulers.background import BackgroundScheduler
 from routes.verifierArticles_routes import router as verifierArticles
 from fastapi.middleware.cors import CORSMiddleware
+from utils.logger import logger
 
 app = FastAPI()
 app.include_router(article_router)
@@ -28,4 +29,4 @@ def home() :
 def démarrer_scheduler():
     scheduler.add_job(pipline, 'interval', hours=24)
     scheduler.start()
-    print("✅ Scheduler démarré - Vérification toutes les 24 heures")
+    logger.info("✅ Scheduler démarré - Vérification toutes les 24 heures")

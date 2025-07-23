@@ -7,15 +7,17 @@ import xgboost as xgb
 from xgboost import DMatrix
 import traceback  # pour logguer les erreurs
 from catboost import CatBoostClassifier
-
+import os
 
  # Assure-toi que le chemin est correct
 
 def data_pretraitement(articles):
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # ← app/routes/
+    MAPPING_PATH = os.path.join(BASE_DIR, '..', 'ml_model', 'famille_sf_mapping.json')
     df = pd.DataFrame(articles)
     
     # Charger le mapping
-    with open("famille_sf_mapping.json", "r", encoding="utf-8") as f:
+    with open(MAPPING_PATH, encoding="utf-8") as f:
         mapping = json.load(f)
 
     df['SousFamille'] = df['SousFamille'].fillna('Aucune').replace('', 'Aucune')
@@ -30,7 +32,9 @@ def data_pretraitement(articles):
 def detcter_les_anomalies(articles):
     anomalies = []
     model = CatBoostClassifier()
-    model.load_model("catboost_model.cbm")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # dossier actuel du script
+    MODEL_PATH = os.path.join(BASE_DIR, '..', 'ml_model', 'catboost_model.cbm')
+    model.load_model(MODEL_PATH)
     try:
         df = data_pretraitement(articles)
 
@@ -40,9 +44,7 @@ def detcter_les_anomalies(articles):
                 row['prixAchat'],
                 row['Famille_SousFamille_encoded']
             ]], columns=["PrixFac", "prixAchat", "Famille_SousFamille_encoded"])
-            print(x)
             prediction = model.predict(x)
-            print ('prediction=', prediction)
             if prediction[0] == 1:
                 anomalies.append({
                     "IDArticle": row['IDArticle'],
@@ -61,6 +63,5 @@ def detcter_les_anomalies(articles):
 
     except Exception as e:
         # Pour debug : tu peux aussi logguer traceback.format_exc()
-        print(traceback.format_exc())  
         raise HTTPException(status_code=500, detail="Une erreur interne est survenue lors de l'analyse.")
 
