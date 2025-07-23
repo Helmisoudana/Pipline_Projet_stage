@@ -84,7 +84,7 @@ Un système intelligent de vérification automatique des articles basé sur Fast
     |   VerifCode.py
     |   verifnull.py
     |   verif_duplication.py
-```bash
+```
 
 ## 🚀 Fonctionnalités
 
