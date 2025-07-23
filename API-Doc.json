@@ -1,0 +1,203 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/article/": {
+      "get": {
+        "tags": ["articles"],
+        "summary": "Get Last 100 Articles",
+        "operationId": "get_last_100_articles_article__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VerifierByIds": {
+      "get": {
+        "tags": ["Articles"],
+        "summary": "Verifiertestarticle",
+        "operationId": "VerifierTestArticle_VerifierByIds_get",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArticlesImportRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erreur de validation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                },
+                "example": {
+                  "data": [],
+                  "message": "Erreur de validation : champ requis manquant",
+                  "status": 400
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TestArticle": {
+      "post": {
+        "tags": ["Articles"],
+        "summary": "Verifier Articles",
+        "operationId": "Verifier_articles_TestArticle_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArticleImportRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erreur de validation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                },
+                "example": {
+                  "data": [],
+                  "message": "Erreur de validation : format invalide ou champ manquant",
+                  "status": 400
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Home",
+        "operationId": "home__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "APIResponse": {
+        "type": "object",
+        "title": "APIResponse",
+        "required": ["data", "message", "status"],
+        "properties": {
+          "data": {
+            "title": "Data",
+            "type": ["array", "null"],
+            "items": {}
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "status": {
+            "type": "integer",
+            "title": "Status",
+            "default": 200
+          }
+        }
+      },
+      "ArticleImportRequest": {
+        "type": "object",
+        "title": "ArticleImportRequest",
+        "required": [
+          "IDArticle",
+          "Article",
+          "Etat",
+          "prixAchat",
+          "PrixFac",
+          "Famille",
+          "SousFamille",
+          "codeFamille",
+          "Saison",
+          "Ordre",
+          "couleur",
+          "fournisseur",
+          "Code"
+        ],
+        "properties": {
+          "IDArticle": { "type": "integer", "title": "Idarticle" },
+          "Article": { "type": "string", "title": "Article" },
+          "Etat": { "type": "integer", "title": "Etat" },
+          "prixAchat": { "type": "number", "title": "Prixachat" },
+          "PrixFac": { "type": "number", "title": "Prixfac" },
+          "Famille": { "type": "string", "title": "Famille" },
+          "SousFamille": { "type": "string", "title": "Sousfamille" },
+          "codeFamille": { "type": "string", "title": "Codefamille" },
+          "Saison": { "type": "string", "title": "Saison" },
+          "Ordre": { "type": "string", "title": "Ordre" },
+          "couleur": { "type": "string", "title": "Couleur" },
+          "fournisseur": { "type": "string", "title": "Fournisseur" },
+          "Code": { "type": "string", "title": "Code" }
+        }
+      },
+      "ArticlesImportRequest": {
+        "type": "object",
+        "title": "ArticlesImportRequest",
+        "required": ["ids"],
+        "properties": {
+          "ids": {
+            "type": "array",
+            "title": "Ids",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}

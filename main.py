@@ -5,6 +5,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from routes.verifierArticles_routes import router as verifierArticles
 from fastapi.middleware.cors import CORSMiddleware
 from utils.logger import logger
+from config.config import settings
+import uvicorn
 
 app = FastAPI()
 app.include_router(article_router)
@@ -30,3 +32,6 @@ def démarrer_scheduler():
     scheduler.add_job(pipline, 'interval', hours=24)
     scheduler.start()
     logger.info("✅ Scheduler démarré - Vérification toutes les 24 heures")
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host=settings.app_host, port=settings.app_port, reload=True)

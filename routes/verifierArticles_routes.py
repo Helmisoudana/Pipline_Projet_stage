@@ -6,8 +6,8 @@ from schemas.response_schema import APIResponse
 from utils.logger import logger 
 
 router = APIRouter(prefix="", tags=["Articles"])
-@router.get("/articles")
-def VerifierTestArticle(payload: ArticlesImportRequest):
+@router.get("/VerifierByIds" , response_model=APIResponse)
+def VerifierTestArticle(payload: ArticlesImportRequest ):
     logger.info(f"Requête /articles reçue avec payload: {payload}")
     try:
         articles = import_articles_by_ids(payload)
@@ -18,7 +18,7 @@ def VerifierTestArticle(payload: ArticlesImportRequest):
         logger.error(f"Erreur lors de l'exécution du pipeline /articles : {e}", exc_info=True)
         return APIResponse(data=[], message=f"Erreur lors de l'exécution du pipeline : {str(e)}", status=400)
 
-@router.post("/testarticle")
+@router.post("/TestArticle" ,response_model=APIResponse)
 def Verifier_articles(payload: ArticleImportRequest):
     logger.info(f"Requête /testarticle reçue avec payload: {payload}")
     try:
