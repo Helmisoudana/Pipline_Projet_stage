@@ -18,9 +18,9 @@ Enregistrer les anomalies détectées dans la base de données dédiée.
 
 Double API FastAPI :
 
-/articles : Une API REST qui reçoit une liste d’IDs d’articles, les récupère depuis la base de données principale, et les soumet au système de détection.
+- `get "/articles"` : Une API REST qui reçoit une liste d’IDs d’articles, les récupère depuis la base de données principale, et les soumet au système de détection.
 
-/TestArticle : Une API de test permettant de soumettre manuellement des articles (au format JSON) pour tester la robustesse du système sans modifier la base de production.
+- `POST "/TestArticle"` : Une API de test permettant de soumettre manuellement des articles (au format JSON) pour tester la robustesse du système sans modifier la base de production.
 
 
 
