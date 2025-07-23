@@ -3,7 +3,7 @@
 Un système intelligent de vérification automatique des articles basé sur FastAPI, MongoDB et des modèles d'apprentissage automatique (CatBoost, XGBoost, etc.). Ce système permet de détecter des anomalies dans les articles collectés via une API externe, comme les duplications, champs vides, ou valeurs incohérentes.
 
 ## 📁 Structure du projet
-
+```bash
 +---database
 |   |   session.py
 |   |
@@ -84,7 +84,7 @@ Un système intelligent de vérification automatique des articles basé sur Fast
     |   VerifCode.py
     |   verifnull.py
     |   verif_duplication.py
-
+```bash
 
 ## 🚀 Fonctionnalités
 
