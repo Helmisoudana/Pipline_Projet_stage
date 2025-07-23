@@ -1,6 +1,28 @@
 # 🧠 Article Verification System
 
-Un système intelligent de vérification automatique des articles basé sur FastAPI, MongoDB et des modèles d'apprentissage automatique (CatBoost, XGBoost, etc.). Ce système permet de détecter des anomalies dans les articles collectés via une API externe, comme les duplications, champs vides, ou valeurs incohérentes.
+🧠 Description du Système Intelligent de Détection d’Anomalies
+Article Verification System est un système intelligent conçu pour automatiser la détection d’anomalies dans une base de données d’articles à l’aide d’un modèle de machine learning intégré. 
+
+⚙️ Fonctionnalités principales
+Détection intelligente d’anomalies :
+Le système intègre un modèle de machine learning entraîné pour détecter automatiquement les incohérences ou anomalies sur les articles (champs incohérents, valeurs extrêmes, duplications, etc.).
+
+Surveillance quotidienne automatique :
+Un service planifié s’exécute toutes les 24 heures afin de :
+
+Identifier tous les articles créés ou modifiés la veille.
+
+Transmettre ces articles au module de détection pour analyse.
+
+Enregistrer les anomalies détectées dans la base de données dédiée.
+
+Double API FastAPI :
+
+/articles : Une API REST qui reçoit une liste d’IDs d’articles, les récupère depuis la base de données principale, et les soumet au système de détection.
+
+/TestArticle : Une API de test permettant de soumettre manuellement des articles (au format JSON) pour tester la robustesse du système sans modifier la base de production.
+
+
 
 ## 📁 Structure du projet
 ```bash
