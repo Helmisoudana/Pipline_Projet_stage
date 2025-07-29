@@ -25,13 +25,13 @@ app.add_middleware(
 )
 @app.get("/")
 def home() :
-    return {'welcome to our system'}
+    logger.info("welcome to our system")
 
 @app.on_event("startup")
 def démarrer_scheduler():
     scheduler.add_job(pipline, 'interval', hours=24)
     scheduler.start()
-    logger.info("✅ Scheduler démarré - Vérification toutes les 24 heures")
+    logger.info("Scheduler démarré - Vérification toutes les 24 heures")
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host=settings.app_host, port=settings.app_port, reload=True)

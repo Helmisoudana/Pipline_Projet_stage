@@ -5,7 +5,7 @@ from verification.verifnull import detect_null_or_vide_champs
 from verification.VerifCode import detect_code_errors
 from verification.detect_avec_model import detcter_les_anomalies
 from verification.save_anomalies import save_anomalies
-from fastapi import HTTPException
+
 
 def pipline():
     try:
@@ -38,4 +38,4 @@ def pipline():
 
     except Exception as e:
         logger.error(f"Erreur dans le pipeline : {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Erreur dans le pipeline : {str(e)}")
+

@@ -4,6 +4,7 @@ from verification.verifnull import detect_null_or_vide_champs
 from verification.VerifCode import detect_code_errors
 from verification.detect_avec_model import detcter_les_anomalies
 from fastapi import HTTPException
+from utils.logger import logger
 
 def pipline(articles):
     try:
@@ -16,11 +17,6 @@ def pipline(articles):
         anomalies += detcter_les_anomalies(articles)
         return anomalies
 
-    except HTTPException as http_ex:
-        # Si fetch_articles a déjà levé une HTTPException
-        raise http_ex
-
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Erreur dans le pipeline : {str(e)}")
-
+        logger.info(f"Erreur dans le pipeline : {str(e)}" , exc_info=True)
 
