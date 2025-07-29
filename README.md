@@ -18,7 +18,7 @@ Enregistrer les anomalies détectées dans la base de données dédiée.
 
 Double API FastAPI :
 
-- `get "/articles"` : Une API REST qui reçoit une liste d’IDs d’articles, les récupère depuis la base de données principale, et les soumet au système de détection.
+- `get "/VerifierByIds"` : Une API REST qui reçoit une liste d’IDs d’articles, les récupère depuis la base de données principale, et les soumet au système de détection.
 
 - `POST "/TestArticle"` : Une API de test permettant de soumettre manuellement des articles (au format JSON) pour tester la robustesse du système sans modifier la base de production.
 
@@ -149,14 +149,15 @@ uvicorn main:app --reload
 Ouvrir dans le navigateur :
 👉 http://127.0.0.1:8000
 
-📬 **Routes disponibles**
-GET /articles/articles : Vérifie les articles de la base de données
+📬 **Routes disponibles** 
 
-POST /articles/testarticle : Vérifie des articles provenant d'une API externe
+`GET "/VerifierByIds"`: Vérifie les articles de la base de données
+
+`POST "/testarticle"` : Vérifie des articles provenant d'une API externe
 
 ✅ **Exemple d'appel API**
 ```bash
-curl -X POST http://localhost:8000/articles/testarticle
+curl -X POST http://localhost:8000/testarticle
 ```
 📚 **Visualiser la documentation de l'API**
 
