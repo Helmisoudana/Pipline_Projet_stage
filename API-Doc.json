@@ -130,26 +130,35 @@
   "components": {
     "schemas": {
       "APIResponse": {
+  "type": "object",
+  "title": "APIResponse",
+  "required": ["data", "message", "status"],
+  "properties": {
+    "data": {
+      "title": "Data",
+      "type": ["array", "null"],
+      "items": {
         "type": "object",
-        "title": "APIResponse",
-        "required": ["data", "message", "status"],
         "properties": {
-          "data": {
-            "title": "Data",
-            "type": ["array", "null"],
-            "items": {}
-          },
-          "message": {
-            "type": "string",
-            "title": "Message"
-          },
-          "status": {
-            "type": "integer",
-            "title": "Status",
-            "default": 200
-          }
-        }
-      },
+          "IDArticle": { "type": "integer" },
+          "Code": { "type": "string" },
+          "Type": { "type": "string" },
+          "message": { "type": "string" }
+        },
+        "required": ["IDArticle", "Code", "Type", "message"]
+      }
+    },
+    "message": {
+      "type": "string",
+      "title": "Message"
+    },
+    "status": {
+      "type": "integer",
+      "title": "Status",
+      "default": 200
+    }
+  }
+},
       "ArticleImportRequest": {
         "type": "object",
         "title": "ArticleImportRequest",

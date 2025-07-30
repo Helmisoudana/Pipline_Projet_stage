@@ -1,20 +1,23 @@
 # 🧠 Article Verification System
 
-🧠 Description du Système Intelligent de Détection d’Anomalies
+`🧠 Description du Système Intelligent de Détection d’Anomalies`:
+
 Article Verification System est un système intelligent conçu pour automatiser la détection d’anomalies dans une base de données d’articles à l’aide d’un modèle de machine learning intégré. 
 
-⚙️ Fonctionnalités principales
+`⚙️ Fonctionnalités principales`
+
 Détection intelligente d’anomalies :
+
 Le système intègre un modèle de machine learning entraîné pour détecter automatiquement les incohérences ou anomalies sur les articles (champs incohérents, valeurs extrêmes, duplications, etc.).
 
 Surveillance quotidienne automatique :
 Un service planifié s’exécute toutes les 24 heures afin de :
 
-Identifier tous les articles créés ou modifiés la veille.
+- Identifier tous les articles créés ou modifiés la veille.
 
-Transmettre ces articles au module de détection pour analyse.
+- Transmettre ces articles au module de détection pour analyse.
 
-Enregistrer les anomalies détectées dans la base de données dédiée.
+- Enregistrer les anomalies détectées dans la base de données dédiée.
 
 Double API FastAPI :
 
@@ -147,7 +150,7 @@ Assurez-vous que votre fichier .env contient l'URI MYSQL et les paramètres néc
 uvicorn main:app --reload
 ```
 Ouvrir dans le navigateur :
-👉 http://127.0.0.1:8000
+👉 http://127.0.0.1:8000 : par defaut
 
 📬 **Routes disponibles** 
 

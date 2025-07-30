@@ -18,9 +18,9 @@ scheduler = BackgroundScheduler()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # ou ton frontend http://localhost:4200
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # <- autorise GET, POST, OPTIONS...
+    allow_methods=["*"],  
     allow_headers=["*"],
 )
 @app.get("/")
