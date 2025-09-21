@@ -25,7 +25,7 @@ app.add_middleware(
 )
 @app.get("/")
 def home() :
-    logger.info("welcome to our system"
+    logger.info("welcome to our system")
 
 @app.on_event("startup")
 def démarrer_scheduler():
